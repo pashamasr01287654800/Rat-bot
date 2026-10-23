@@ -1,5 +1,9 @@
 # Configuration & Usage Guide
 
+<p align="center">
+  <img src="Rat-bot.png" alt="System Monitor Banner" width="700">
+</p>
+
 ## 1. Telegram Bot Setup
 
 ### Create a Bot
